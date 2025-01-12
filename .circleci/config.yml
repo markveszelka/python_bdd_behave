@@ -1,0 +1,28 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@3.0.0
+
+jobs:
+  build-and-test:
+    docker:
+      - image: circleci/python:3.9
+    executor: python/default
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+          requirements: requirements.txt
+
+      # Run high priority tests
+      - run:
+          name: run high priority tests
+          command: behave --tags=priority_high
+          when: always
+
+workflows:
+  version: 2
+  test-workflow:
+    jobs:
+      - build-and-test
