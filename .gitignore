@@ -68,3 +68,6 @@ venv.bak/
 # Allure reports
 allure-report/
 allure-results/
+
+# Mac OS
+.DS_Store
