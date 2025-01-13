@@ -45,7 +45,6 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
-.pytest_cache/
 
 # Translations
 *.mo
@@ -69,3 +68,6 @@ venv.bak/
 # Allure reports
 allure-report/
 allure-results/
+
+# Mac OS
+.DS_Store

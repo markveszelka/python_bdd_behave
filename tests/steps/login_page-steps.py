@@ -1,6 +1,6 @@
 from behave import *
 from selenium.webdriver.support import expected_conditions as EC
-from src.locators.locators import Locators
+from src.pageObjects.locators.locators import Locators
 
 import logging
 
