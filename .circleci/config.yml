@@ -6,19 +6,25 @@ orbs:
 jobs:
   build-and-test:
     docker:
-      - image: circleci/python:3.9
+      - image: circleci/python:3.9-rc-node-browsers # With this image Chrome works fine, but the image is deprecated
     executor: python/default
+#    parallelism: 2 # Parallel runs: https://circleci.com/docs/parallelism-faster-jobs/
     working_directory: ~/repo
     steps:
       - checkout
-      - python/install-packages:
-          pkg-manager: pip
-          requirements: requirements.txt
-
-      # Run high priority tests
       - run:
-          name: run high priority tests
-          command: behave --tags=priority_high
+          name: Install Python Dependencies and Upgrade pip
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+
+      - run:
+          name: Run @priority_high scenarios
+          command: |
+            . venv/bin/activate
+            behave --tags=priority_high
           when: always
 
 workflows:
