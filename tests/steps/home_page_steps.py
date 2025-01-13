@@ -1,5 +1,6 @@
 from behave import *
-from src.pages.home_page import HomePage
+from src.pageObjects.constants.constants import Constants
+from src.pageObjects.pages.home_page import HomePage
 
 import logging
 
@@ -14,8 +15,8 @@ logging.basicConfig(
 def step_impl(context):
     logging.info("Navigating to home page.")
     context.home_page = HomePage(context.driver)
-    context.home_page.driver.get("https://magento.softwaretestingboard.com")
-    assert "Home Page" in context.home_page.driver.title
+    context.home_page.driver.get(Constants.HOME_PAGE_URL.value)
+    assert Constants.HOMA_PAGE_TEXT.value in context.home_page.driver.title
 
 
 @when('I click the login button')

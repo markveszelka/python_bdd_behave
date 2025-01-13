@@ -1,5 +1,5 @@
-from src.locators.locators import Locators
-from src.pages.base_page import BasePage
+from src.pageObjects.locators.locators import Locators
+from src.pageObjects.pages.base_page import BasePage
 
 
 class HomePage(BasePage):
