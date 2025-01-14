@@ -1,26 +1,35 @@
-from selenium.webdriver.support.ui import WebDriverWait
+from src.pageObjects.constants.constants import Constants
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from seleniumpagefactory import PageFactory
+from colorama import Fore, Style, init
+
+init()
 
 
-class BasePage(PageFactory):
+class BasePage:
     def __init__(self, driver):
         self.driver = driver
-        super().__init__()
 
-    def click(self, by, value):
-        element = self.wait_for_element(by, value)
-        element.click()
+    def click_element(self, by, value):
+        self.driver.find_element(by, value).click()
 
-    def send_keys(self, by, value, text):
-        element = self.wait_for_element(by, value)
-        element.send_keys(text)
+    def is_text_visible(self, locator, text):
+        try:
+            _element = self.driver.find_element(*locator)
+            if _element.is_displayed():
+                return text in _element.text
+            else:
+                return False
+        except Exception as e:
+            print(f'Error occurred while checking text visibility: {e}')
+            return False
 
-    def wait_for_element(self, by, value, timeout=10):
-        return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((by, value)))
-
-    def wait_until(self, condition, timeout=10):
-        return WebDriverWait(self.driver, timeout).until(condition)
-
-    def wait_for_element_visible(self, by, value, timeout=10):
-        return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((by, value)))
+    def load_given_page(self, page):
+        if page.lower() == 'home':
+            self.driver.get(Constants.HOME_PAGE_URL.value)
+            WebDriverWait(self.driver, 10).until(EC.title_contains(Constants.HOME_PAGE_TEXT.value))
+        elif page.lower() == 'login':
+            self.driver.get(Constants.LOGIN_PAGE_URL.value)
+            WebDriverWait(self.driver, 10).until(EC.title_contains(Constants.LOGIN_PAGE_TEXT.value))
+        else:
+            raise ValueError(f'{Fore.YELLOW}{Style.BRIGHT}Page "{page}" is not implemented yet{Style.RESET_ALL}')
