@@ -8,7 +8,7 @@ jobs:
     docker:
       - image: circleci/python:3.9-rc-node-browsers # With this image Chrome works fine, but the image is deprecated
     executor: python/default
-#    parallelism: 2 # Parallel runs: https://circleci.com/docs/parallelism-faster-jobs/
+    parallelism: 4 # Parallel runs: https://circleci.com/docs/parallelism-faster-jobs/
     working_directory: ~/repo
     steps:
       - checkout
@@ -21,11 +21,44 @@ jobs:
             pip install -r requirements.txt
 
       - run:
-          name: Run @priority_high scenarios
+          name: Install Allure Commandline
           command: |
             . venv/bin/activate
-            behave --tags=priority_high
+            npm install allure-commandline --save-dev
           when: always
+
+#      - run:
+#          name: Run @priority_high scenarios
+#          command: |
+#            . venv/bin/activate
+#            behave --tags=priority_high --no-skipped
+#          when: always
+#
+#      - run:
+#          name: Run @priority_medium scenarios
+#          command: |
+#            . venv/bin/activate
+#            behave --tags=priority_medium --no-skipped
+#          when: always
+
+      - run:
+          name: Run @level_e2e scenarios
+          command: |
+            . venv/bin/activate
+            behave --tags=level_e2e --no-skipped
+          when: always
+
+      - run:
+          name: Generate Allure Report
+          command: |
+            ./node_modules/.bin/allure generate --single-file allure-results --clean -o allure-report
+          when: always
+
+      - store_artifacts:
+          path: allure-report
+
+      - store_artifacts:
+          path: allure-screenshot
 
 workflows:
   version: 2

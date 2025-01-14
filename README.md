@@ -2,11 +2,11 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
+<div style="text-align: center;">
   <a href="https://github.com/markveszelka/python_bdd_behave">
   </a>
 
-<h1 align="center">Test Automation Framework</h1>
+<h1 style="text-align: center;">Test Automation Framework</h1>
 
 ### About The Project
 
@@ -76,7 +76,7 @@ web-based test reports to help teams gain insights from test results.
    ```
 
 <!-- CONTACT -->
-<div align="center">
+<div style="text-align: center;">
 
 ## Contact
 
