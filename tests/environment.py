@@ -1,5 +1,4 @@
-from behave import fixture, use_fixture
-
+from behave import *
 from src.lib.drivers.chrome_driver_provider import ChromeDriver
 from src.lib.helpers.allure_screen_shot_helper import ScreenshotHelper
 from src.pageObjects.pages.base_page import BasePage
