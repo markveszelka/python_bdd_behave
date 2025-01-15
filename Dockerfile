@@ -1,9 +1,5 @@
-ARG PYTHON_VERSION=3.9
-ARG NODE_VERSION=latest
-ARG ALLURE_VERSION=2.24.0
-ARG CHROME_DRIVER_VERSION=latest
-
-FROM circleci/python:${PYTHON_VERSION}-node-browsers
+# TODO: add variables for magic numbers
+FROM circleci/python:3.9-node-browsers
 
 WORKDIR /app
 COPY requirements.txt /app/
@@ -13,10 +9,10 @@ RUN python3 -m venv venv && \
     pip install --upgrade pip && \
     pip install -r requirements.txt
 
-RUN curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.zip && \
+RUN curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.zip && \
     unzip allure.zip -d /app/ && \
     rm allure.zip && \
-    sudo ln -s /app/allure-${ALLURE_VERSION}/bin/allure /usr/local/bin/allure
+    sudo ln -s /app/allure-2.24.0/bin/allure /usr/local/bin/allure
 
 USER circleci
 COPY . /app/

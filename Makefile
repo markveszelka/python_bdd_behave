@@ -16,11 +16,14 @@ run-level-e2e-tests:
 generate-allure-report:
 	allure generate --single-file $(ALLURE_RESULTS_DIR) --clean -o $(ALLURE_REPORT_DIR)
 
-open-allure-report:
+open-local-allure-report:
 	allure open $(ALLURE_REPORT_DIR)
 
+clean-local-reports:
+	rm -rf allure-report/* allure-results/* allure-screen-shots/*
+
 # To run it use command: 'make run-local-all'
-run-local-all: run-level-e2e-tests generate-allure-report open-allure-report
+run-local-all: clean-local-reports run-level-e2e-tests generate-allure-report open-local-allure-report
 
 
 # LOCAL DOCKER RUN:
@@ -31,8 +34,11 @@ run-allure-report:
 	docker run --rm -it -v $(DOCKER_ALLURE_REPORT_DIR):/app/allure-report -v $(DOKCER_ALLURE_RESULTS_DIR):/app/allure-results $(DOCKER_IMAGE)
 
 # Clean up allure files
-clean:
-	rm -rf docker-allure-report/* docker-allure-results/*
+clean-docker-reports:
+	rm -rf docker-allure-report/* docker-allure-results/* allure-screenshots allure-results allure-report
+
+open-docker-allure-report:
+	open docker-allure-report/index.html
 
 # To run it use command: 'make run-docker-all'
-run-docker-all: clean build run-allure-report
+run-docker-all: clean-docker-reports build run-allure-report open-docker-allure-report
