@@ -13,5 +13,8 @@ RUN python3 -m venv venv && \
 # Copy application files
 COPY . /app/
 
+# Set environment variables for virtual environment
+ENV PATH="/app/venv/bin:$PATH"
+
 # Default command to run behave with the specified options
 CMD ["behave", "--tags=level_e2e", "--no-skipped"]
