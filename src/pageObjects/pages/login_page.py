@@ -1,6 +1,9 @@
-from selenium.webdriver.common.by import By
 from src.pageObjects.constants.constants import Constants
 from src.pageObjects.pages.base_page import BasePage
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from src.data.time_outs import TimeOut
 
 
 class LoginPage(BasePage):
@@ -44,9 +47,16 @@ class LoginPage(BasePage):
             return False
 
     def is_logged_in(self) -> bool:
-        return self.is_element_visible(self.ACCOUNT_NAME_LOCATOR)
+        try:
+            WebDriverWait(self.driver, TimeOut.MEDIUM).until(
+                EC.visibility_of_element_located(self.ACCOUNT_NAME_LOCATOR)
+            )
+            return True
+        except Exception as e:
+            print(f"Error during login check: {e}")
+            return False
 
-    def is_email_and_password_error_visible(self):
+    def is_email_and_password_error_visible(self) -> bool:
         return all([
             self.is_element_visible(self.EMAIL_ERROR_LOCATOR),
             self.is_element_visible(self.PASSWORD_ERROR_LOCATOR)
