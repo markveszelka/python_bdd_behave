@@ -8,12 +8,12 @@
 
 <h1 style="text-align: center;">Test Automation Framework</h1>
 
-### About The Project
+## About The Project
 
 Test Automation Framework, written in Python using Behave and Selenium.
 BDD approach is used to write test cases, with Gherkin syntax.
 
-### Built With
+## Built With
 
 [![Python][Python]][Python-url]
 [![Selenium][Selenium]][Selenium-url]
@@ -22,7 +22,7 @@ BDD approach is used to write test cases, with Gherkin syntax.
 [![Allure][Allure]][Allure-url]
 [![Docker][Docker]][Docker-url]
 
-### CircleCI integration
+## CircleCI integration
 
 [![CircleCI][CircleCI]][CircleCI-mark-veszelka-url]
 
@@ -30,18 +30,17 @@ CircleCI is a CI/CD platform that automates build, test, and delivery,
 helping teams release code quickly and confidently.
 Click the badge to view the project's build status.
 
-# Allure Reports
+## Allure Reports
+
+[![Allure][Allure]][Allure-Report-url]
 
 Allure is a lightweight, multi-language tool that provides concise,
 web-based test reports to help teams gain insights from test results.
+Click the badge to view an Allure report of a build from 1/14/2025.
+It contains 12 test cases, of which 11 passed and 1 failed.
+Test failure screenshot also included.
 
-**TODO:** Add screenshots
-
-[//]: # (![Image alt]&#40;  add image link  ;)
-
-[//]: # (![Image alt]&#40;  add image link  ;)
-
-### Run the project
+## Run the project
 
 </div>
 
@@ -110,6 +109,8 @@ mark.veszelka@gmail.com
 [Allure]: https://img.shields.io/badge/Allure-ff5000?style=for-the-badge&logo=allure&logoColor=white
 
 [Allure-url]: https://allurereport.org/
+
+[Allure-Report-url]: https://output.circle-artifacts.com/output/job/1bed4c4a-a075-4ead-8d5d-e0da5fe08d3e/artifacts/0/allure-report/index.html
 
 [Docker]: https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white&labelColor=1D63ED&color=1D63ED
 
