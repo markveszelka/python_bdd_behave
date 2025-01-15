@@ -70,5 +70,10 @@ allure-report/
 allure-results/
 allure-screenshot/
 
+docker-allure-report/*
+!docker-allure-report/
+docker-allure-results/*
+!docker-allure-results/
+
 # Mac OS
 .DS_Store
