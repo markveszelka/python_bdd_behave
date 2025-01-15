@@ -15,13 +15,13 @@ def step_impl(context, button_text):
 
 @then('I see the "Home Page" title')
 def step_impl(context):
-    assert Constants.HOME_PAGE_TEXT.value in context.home_page.driver.title, \
-        f"Expected title '{Constants.HOME_PAGE_TEXT.value}' not found in page title."
+    assert Constants.HOME_PAGE_TEXT in context.home_page.driver.title, \
+        f"Expected title '{Constants.HOME_PAGE_TEXT}' not found in page title."
 
 
 @then(r'the page with "(.+)" is opened')
 def step_impl(context, url):
-    expected_url = Constants.HOME_PAGE_URL.value + url
+    expected_url = Constants.HOME_PAGE_URL + url
     assert context.home_page.driver.current_url == expected_url, \
         f"Expected URL '{expected_url}' but found '{context.home_page.driver.current_url}'."
 

@@ -38,11 +38,13 @@ class BasePage:
             return False
 
     def load_given_page(self, page):
+        print("LOAD GIVEN PAGE")
         if page.lower() == 'home':
-            self.driver.get(Constants.HOME_PAGE_URL.value)
-            WebDriverWait(self.driver, 10).until(EC.title_contains(Constants.HOME_PAGE_TEXT.value))
+            self.driver.get(Constants.HOME_PAGE_URL)
+            WebDriverWait(self.driver, 10).until(EC.title_contains(Constants.HOME_PAGE_TEXT))
         elif page.lower() == 'login':
-            self.driver.get(Constants.LOGIN_PAGE_URL.value)
-            WebDriverWait(self.driver, 10).until(EC.title_contains(Constants.LOGIN_PAGE_TEXT.value))
+            print(Constants.LOGIN_PAGE_URL)
+            self.driver.get(Constants.LOGIN_PAGE_URL)
+            WebDriverWait(self.driver, 10).until(EC.title_contains(Constants.LOGIN_PAGE_TEXT))
         else:
             raise ValueError(f'{Fore.YELLOW}{Style.BRIGHT}Page "{page}" is not implemented yet{Style.RESET_ALL}')
