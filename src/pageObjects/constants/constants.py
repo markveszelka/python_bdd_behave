@@ -1,4 +1,4 @@
-class Constants():
+class Constants:
     BASE_URL = "https://magento.softwaretestingboard.com/"
     HOME_PAGE_URL = BASE_URL
     LOGIN_PAGE_URL = f"{BASE_URL}customer/account/login/"
