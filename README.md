@@ -21,6 +21,8 @@ BDD approach is used to write test cases, with Gherkin syntax.
 [![CircleCI][CircleCI]][CircleCI-url]
 [![Allure][Allure]][Allure-url]
 [![Docker][Docker]][Docker-url]
+[![Makefile][Makefile]][Makefile-url]
+
 
 ## CircleCI integration
 
@@ -40,7 +42,7 @@ Click the badge to view an Allure report of a build from 1/14/2025.
 It contains 12 test cases, of which 11 passed and 1 failed.
 Test failure screenshot also included.
 
-## Run the project
+## Run the project:
 
 </div>
 
@@ -48,31 +50,19 @@ Test failure screenshot also included.
    ```sh
    git clone git@github.com:markveszelka/python_bdd_behave.git
    ```
-2. Make sure that Python 3 is installed on the system.
+2. Make sure that Python 3 (and Docker) is installed on the system.
 3. create isolated virtual environment using command:
    ```sh
    python3 -m venv venv
    ```
-4. Activate virtual environment:
+4. Run the project locally using Makefile command:
    ```sh
-    .venv/bin/activate
+   make run-local-all
+   ```
+5. OR Run the project in Docker container locally using Makefile command:
+    ```sh
+    make run-docker-all
     ```
-5. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
-6. Run @priority-high test cases
-   ```sh
-   behave --tags=priority_high
-   ```
-7. Generate allure report:
-   ```sh
-   allure generate --single-file allure-results --clean -o allure-report
-   ```
-8. Open the Allure report in your browser:
-   ```sh
-   open allure-report/index.html
-   ```
 
 <!-- CONTACT -->
 <div style="text-align: center;">
@@ -115,6 +105,14 @@ mark.veszelka@gmail.com
 [Docker]: https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white&labelColor=1D63ED&color=1D63ED
 
 [Docker-url]: https://www.docker.com/
+
+[Makefile]: https://img.shields.io/badge/Makefile-ff5000?style=for-the-badge&logo=make&logoColor=white
+
+[Makefile-url]: https://www.gnu.org/software/make/manual/make.html
+
+```
+
+```
 
 
 

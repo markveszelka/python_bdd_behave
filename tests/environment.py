@@ -8,7 +8,7 @@ from src.pageObjects.pages.login_page import LoginPage
 
 @fixture
 def browser_chrome(context):
-    context.driver = ChromeDriver().get_driver()
+    context.driver = ChromeDriver(headless=True).get_driver()
     yield context.driver
     context.driver.quit()
 

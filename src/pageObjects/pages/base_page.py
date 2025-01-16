@@ -1,5 +1,5 @@
 from src.data.time_outs import TimeOut
-from src.pageObjects.constants.constants import Constants
+from src.pageObjects.constants.constants import *
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -41,11 +41,11 @@ class BasePage:
     def load_given_page(self, page):
         print("LOAD GIVEN PAGE")
         if page.lower() == 'home':
-            self.driver.get(Constants.HOME_PAGE_URL)
-            WebDriverWait(self.driver, TimeOut.MEDIUM).until(EC.title_contains(Constants.HOME_PAGE_TEXT))
+            self.driver.get(URLs.HOME_PAGE_URL)
+            WebDriverWait(self.driver, TimeOut.MEDIUM.value).until(EC.title_contains(Texts.HOME_PAGE_TEXT))
         elif page.lower() == 'login':
-            print(Constants.LOGIN_PAGE_URL)
-            self.driver.get(Constants.LOGIN_PAGE_URL)
-            WebDriverWait(self.driver, TimeOut.MEDIUM).until(EC.title_contains(Constants.LOGIN_PAGE_TEXT))
+            print(URLs.LOGIN_PAGE_URL)
+            self.driver.get(URLs.LOGIN_PAGE_URL)
+            WebDriverWait(self.driver, TimeOut.MEDIUM.value).until(EC.title_contains(Texts.LOGIN_PAGE_TEXT))
         else:
             raise ValueError(f'{Fore.YELLOW}{Style.BRIGHT}Page "{page}" is not implemented yet{Style.RESET_ALL}')

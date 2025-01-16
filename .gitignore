@@ -70,5 +70,10 @@ allure-report/
 allure-results/
 allure-screenshot/
 
+docker-allure-report/*
+!docker-allure-report/.gitkeep
+docker-allure-results/*
+!docker-allure-results/.gitkeep
+
 # Mac OS
 .DS_Store

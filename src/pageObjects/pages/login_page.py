@@ -1,4 +1,4 @@
-from src.pageObjects.constants.constants import Constants
+from src.pageObjects.constants.constants import Messages
 from src.pageObjects.pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -40,7 +40,7 @@ class LoginPage(BasePage):
         try:
             error_visible = self.is_element_visible(self.ERROR_MESSAGE_LOCATOR)
             text_visible = self.is_text_visible(self.ERROR_MESSAGE_TEXT_LOCATOR,
-                                                Constants.INVALID_CREDENTIALS_ERROR_MESSAGE)
+                                                Messages.INVALID_CREDENTIALS_ERROR_MESSAGE)
             return error_visible and text_visible
         except Exception as e:
             print(f"Error checking invalid credentials message visibility: {e}")
@@ -48,7 +48,7 @@ class LoginPage(BasePage):
 
     def is_logged_in(self) -> bool:
         try:
-            WebDriverWait(self.driver, TimeOut.MEDIUM).until(
+            WebDriverWait(self.driver, TimeOut.MEDIUM.value).until(
                 EC.visibility_of_element_located(self.ACCOUNT_NAME_LOCATOR)
             )
             return True
