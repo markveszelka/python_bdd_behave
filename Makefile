@@ -9,7 +9,8 @@ DOCKER_IMAGE = python-bdd
 DOKCER_ALLURE_RESULTS_DIR = $(shell pwd)/docker-allure-results
 DOCKER_ALLURE_REPORT_DIR = $(shell pwd)/docker-allure-report
 
-# LOCAL PYTHON RUN:
+### LOCAL PYTHON RUN: ##########################################
+# FIXME: update script to run e2e tests instead of medium
 run-level-e2e-tests:
 	source .venv/bin/activate && behave --tags=priority_medium --no-skipped
 
@@ -26,12 +27,14 @@ clean-local-reports:
 run-local-all: clean-local-reports run-level-e2e-tests generate-allure-report open-local-allure-report
 
 
-# LOCAL DOCKER RUN:
+### LOCAL DOCKER RUN: ##########################################
 build:
 	docker buildx build --platform linux/amd64 -t $(DOCKER_IMAGE) --load --no-cache .
 
-run-allure-report:
-	docker run --rm -it -v $(DOCKER_ALLURE_REPORT_DIR):/app/allure-report -v $(DOKCER_ALLURE_RESULTS_DIR):/app/allure-results $(DOCKER_IMAGE)
+run-tests-and-generate-allure-report:
+	docker run --rm -it \
+		-v $(DOCKER_ALLURE_REPORT_DIR):/app/allure-report \
+		-v $(DOKCER_ALLURE_RESULTS_DIR):/app/allure-results $(DOCKER_IMAGE)
 
 # Clean up allure files
 clean-docker-reports:
@@ -40,5 +43,6 @@ clean-docker-reports:
 open-docker-allure-report:
 	open docker-allure-report/index.html
 
-# To run it use command: 'make run-docker-all'
-run-docker-all: clean-docker-reports build run-allure-report open-docker-allure-report
+# To run it use command: 'make run-docker-all', and make sure that you have docker installed
+# and in 'environment.py' the headless mode is set to 'True'
+run-docker-all: clean-docker-reports build run-tests-and-generate-allure-report open-docker-allure-report

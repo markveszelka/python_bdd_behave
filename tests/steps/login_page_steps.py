@@ -2,7 +2,7 @@ import time
 from behave import *
 from colorama import init, Fore, Style
 from src.data.test_data import LoginTestData
-from src.pageObjects.constants.constants import Constants
+from src.pageObjects.constants.constants import *
 
 use_step_matcher("re")
 init()
@@ -28,13 +28,13 @@ def step_impl(context, credentials_validity):
 
 @then('I see the login page')
 def step_impl(context):
-    assert Constants.LOGIN_PAGE_TEXT in context.driver.title, "Login page title is incorrect."
+    assert Texts.LOGIN_PAGE_TEXT in context.driver.title, "Login page title is incorrect."
     assert context.login_page.are_login_elements_visible(), "Login page elements are not visible."
 
 
 @then('The URL of the login page is correct')
 def step_impl(context):
-    expected_url = Constants.HOME_PAGE_URL + Constants.LOGIN_PAGE_URL_FRAGMENT
+    expected_url = URLs.HOME_PAGE_URL + URLs.LOGIN_PAGE_URL_FRAGMENT
     actual_url = context.driver.current_url
     assert expected_url == actual_url, f"Expected URL '{expected_url}' but found '{actual_url}'."
 
@@ -52,7 +52,7 @@ def step_impl(context):
 
 @then('I am logged in to My Account page')
 def step_impl(context):
-    assert Constants.MY_ACCOUNT_PAGE_TEXT == context.driver.title, "My Account page title is incorrect."
+    assert Texts.MY_ACCOUNT_PAGE_TEXT == context.driver.title, "My Account page title is incorrect."
     assert context.login_page.is_logged_in(), "User is not logged in."
 
 

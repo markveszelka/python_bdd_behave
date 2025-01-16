@@ -7,7 +7,7 @@ Feature: Home Page Verification
   Background: Open the home page
     Given I am on the "Home" page
 
-  @level_e2e @priority_high
+  @level_e2e @priority_medium
   Scenario: Verify essential elements on the home page
     Then I see the essential home page elements
 

@@ -2,7 +2,7 @@
 Feature: Cart Management
   As a shopper
   I want to manage my cart
-  So that I can update or remove items as needed
+  So that I can adjust Products as needed
 
   Background: Add a Product to Cart
     Given I have added "Push It Messenger Bag" to my cart

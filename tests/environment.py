@@ -8,7 +8,6 @@ from src.pageObjects.pages.login_page import LoginPage
 
 @fixture
 def browser_chrome(context):
-    # TODO: Docker: headless=True, Local: headless=False. Use environment variable to switch between the two.
     context.driver = ChromeDriver(headless=True).get_driver()
     yield context.driver
     context.driver.quit()
