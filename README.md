@@ -65,7 +65,7 @@ Test failure screenshot also included.
    make run-local-all
 ```
 
-### Run the Project locally Docker:
+### Run the Project locally with Docker:
 
 #### 1. Git clone the repository:
 
