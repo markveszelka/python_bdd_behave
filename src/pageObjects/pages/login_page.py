@@ -63,4 +63,7 @@ class LoginPage(BasePage):
         ])
 
     def click_sign_in_button(self):
+        WebDriverWait(self.driver, TimeOut.MEDIUM.value).until(
+            EC.element_to_be_clickable(self.SIGN_IN_BUTTON_LOCATOR)
+        )
         self.click_element(*self.SIGN_IN_BUTTON_LOCATOR)

@@ -75,7 +75,11 @@ Test failure screenshot also included.
 
 #### 2. Make sure that Docker is installed on the system.
 
-#### 3. Run the project in Docker container using Makefile command:
+#### 3. Run the project in Docker container using Makefile command: 
+Be sure that in 'environment.py' file headless mode is set to True, then run. 
+```python
+context.driver = ChromeDriver(headless=True).get_driver()
+```
 
 ```sh
    make run-docker-all

@@ -17,7 +17,7 @@ def step_impl(context, credentials_validity):
     elif credentials_validity.lower() == "invalid":
         context.login_page.trigger_login(LoginTestData.INVALID_EMAIL, LoginTestData.INVALID_PASSWORD)
     elif credentials_validity.lower() == "empty":
-        time.sleep(1)  # Temporary workaround; replace with WebDriverWait in future
+        time.sleep(1)  # TODO: flakiness workaround, until better solution is found. WebDriverWait is not working.
         context.login_page.click_sign_in_button()
     else:
         raise ValueError(
