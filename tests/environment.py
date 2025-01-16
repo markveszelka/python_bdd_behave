@@ -11,7 +11,7 @@ def browser_chrome(context):
     """
     Fixture method to initialize the Chrome browser.
         If you want to run tests locally, you CAN set headless=True or False.
-        If you want to run tests in Docker container, you MUST set headless=False.
+        If you want to run tests in Docker container, you MUST set headless=True.
     """
     context.driver = ChromeDriver(headless=True).get_driver()
     yield context.driver
