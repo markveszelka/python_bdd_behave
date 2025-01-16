@@ -9,10 +9,12 @@ DOCKER_IMAGE = python-bdd
 DOKCER_ALLURE_RESULTS_DIR = $(shell pwd)/docker-allure-results
 DOCKER_ALLURE_REPORT_DIR = $(shell pwd)/docker-allure-report
 
+
 ### LOCAL PYTHON RUN: ##########################################
 run-level-e2e-tests:
-	@echo "Starting run the tests locally..."
-	source .venv/bin/activate && behave --tags=level_e2e --no-skipped
+	@echo "Starting to run the tests locally..."
+	source .venv/bin/activate && behave --tags=level_e2e --no-skipped \
+	|| echo "Tests failed. Proceeding to generate the Allure report."
 
 generate-allure-report:
 	@echo "Generating Allure report..."
@@ -26,7 +28,6 @@ clean-local-reports:
 	@echo "Cleaning up the allure reports..."
 	rm -rf allure-report/* allure-results/* allure-screen-shots/*
 
-# To run it use command: 'make run-local-all'
 run-local-all: clean-local-reports run-level-e2e-tests generate-allure-report open-local-allure-report
 
 
@@ -50,6 +51,6 @@ open-docker-allure-report:
 	@echo "Attempting to open the Allure report in browser. If it does not open automatically, please open '$(DOCKER_ALLURE_REPORT_DIR)/index.html' manually."
 	open docker-allure-report/index.html
 
-# To run it use command: 'make run-docker-all', and make sure that you have docker installed
-# and in 'environment.py' the headless mode is set to 'True'
+# Before run:
+# Make sure that you have Docker installed and in 'environment.py' set 'headless=True' in browser_chrome method.
 run-docker-all: clean-docker-reports build run-tests-and-generate-allure-report open-docker-allure-report
