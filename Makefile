@@ -10,10 +10,9 @@ DOKCER_ALLURE_RESULTS_DIR = $(shell pwd)/docker-allure-results
 DOCKER_ALLURE_REPORT_DIR = $(shell pwd)/docker-allure-report
 
 ### LOCAL PYTHON RUN: ##########################################
-# FIXME: update script to run e2e tests instead of medium
 run-level-e2e-tests:
 	@echo "Starting run the tests locally..."
-	source .venv/bin/activate && behave --tags=priority_medium --no-skipped
+	source .venv/bin/activate && behave --tags=level_e2e --no-skipped
 
 generate-allure-report:
 	@echo "Generating Allure report..."

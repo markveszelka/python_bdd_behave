@@ -20,6 +20,6 @@ RUN mkdir -p /app/allure-results &&  \
 
 ENV PATH="/app/venv/bin:/app/node_modules/.bin:$PATH"
 
-CMD ["bash", "-c", "behave --tags=priority_medium --no-skipped; \
+CMD ["bash", "-c", "behave --tags=level_e2e --no-skipped; \
       allure generate --single-file ./allure-results --clean -o ./allure-report && \
       echo 'Allure report generated at ./allure-report'"]

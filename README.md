@@ -41,9 +41,9 @@ Click the badge to view an Allure report of a build from 1/14/2025.
 It contains 12 test cases, of which 11 passed and 1 failed.
 Test failure screenshot also included.
 
-## Run the project:
-
 </div>
+
+### Run the Project locally with Python:
 
 #### 1. Git clone the repository:
 
@@ -51,20 +51,31 @@ Test failure screenshot also included.
    git clone https://github.com/markveszelka/python_bdd_behave.git
 ```
 
-#### 2. Make sure that Python 3 (and Docker) is installed on the system.
+#### 2. Make sure that Python 3 is installed on the system.
 
 #### 3. Create isolated virtual environment:
 
 ```sh
    python3 -m venv venv
    ```
+
 #### 4. Run the project in Python VENV using Makefile command:
 
 ```sh
    make run-local-all
 ```
 
-#### 5. Run the project in DOCKER container using Makefile command (be sure that Docker is running):
+### Run the Project locally Docker:
+
+#### 1. Git clone the repository:
+
+```sh
+   git clone https://github.com/markveszelka/python_bdd_behave.git
+```
+
+#### 2. Make sure that Docker is installed on the system.
+
+#### 3. Run the project in Docker container using Makefile command:
 
 ```sh
    make run-docker-all
