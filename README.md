@@ -23,7 +23,6 @@ BDD approach is used to write test cases, with Gherkin syntax.
 [![Docker][Docker]][Docker-url]
 [![Makefile][Makefile]][Makefile-url]
 
-
 ## CircleCI integration
 
 [![CircleCI][CircleCI]][CircleCI-mark-veszelka-url]
@@ -46,23 +45,30 @@ Test failure screenshot also included.
 
 </div>
 
-1. Git clone the repo using SSH:
-   ```sh
-   git clone git@github.com:markveszelka/python_bdd_behave.git
-   ```
-2. Make sure that Python 3 (and Docker) is installed on the system.
-3. create isolated virtual environment using command:
-   ```sh
+#### 1. Git clone the repository:
+
+```sh
+   git clone https://github.com/markveszelka/python_bdd_behave.git
+```
+
+#### 2. Make sure that Python 3 (and Docker) is installed on the system.
+
+#### 3. Create isolated virtual environment:
+
+```sh
    python3 -m venv venv
    ```
-4. Run the project locally using Makefile command:
-   ```sh
+#### 4. Run the project in Python VENV using Makefile command:
+
+```sh
    make run-local-all
-   ```
-5. OR Run the project in Docker container locally using Makefile command:
-    ```sh
-    make run-docker-all
-    ```
+```
+
+#### 5. Run the project in DOCKER container using Makefile command (be sure that Docker is running):
+
+```sh
+   make run-docker-all
+```
 
 <!-- CONTACT -->
 <div style="text-align: center;">

@@ -15,7 +15,7 @@ Feature: Home Page Verification
   Scenario Outline: Verify navigation menu buttons
     When I click the "<button>" button
     Then the page with "<url>" is opened
-    And I see the "<header>" header
+    And  I see the "<header>" header
 
     Examples:
       | button     | url              | header     |
@@ -30,4 +30,4 @@ Feature: Home Page Verification
   Scenario: Verify navigation to login page from home
     When I click the "Sign In" button
     Then I see the login page
-    And I see the login fields and button
+    And  I see the login fields and button
